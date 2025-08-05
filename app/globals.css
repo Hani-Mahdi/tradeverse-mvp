@@ -1,0 +1,68 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'Cabin';
+  src: url('/fonts/Cabin/Cabin-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Cabin';
+  src: url('/fonts/Cabin/Cabin-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Cabin';
+  src: url('/fonts/Cabin/Cabin-Italic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Cabin';
+  src: url('/fonts/Cabin/Cabin-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+body {
+  background-color: white;
+  font-family: 'Cabin', sans-serif !important;
+}
+
+.gradient-bg {
+  position: relative;
+  background: linear-gradient(45deg, #1a1a1a, #262626);
+  overflow: hidden;
+}
+
+@keyframes glare {
+  0% {
+    transform: translate(-150%, -150%) rotate(45deg);
+  }
+  100% {
+    transform: translate(150%, 150%) rotate(45deg);
+  }
+}
+
+.gradient-bg::before {
+  content: " ";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    90deg,
+    transparent 45%,
+    rgba(255, 255, 255, 0.25) 50%,
+    transparent 20%
+  );
+  filter: blur(40px); /* softer edges but keeps it skinny */
+  transform: translate(-150%, -150%) rotate(45deg);
+  animation: glare 5s ease-in-out infinite;
+  pointer-events: none;
+}
