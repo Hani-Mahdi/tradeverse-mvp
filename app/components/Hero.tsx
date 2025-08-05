@@ -4,7 +4,7 @@ import NavBar from './NavBar'
 const Hero = () => {
   return (
     <>
-        <div className='h-195 w-screen bg-[url("../public/btc.webp")] bg-cover rounded-bl-[75px] rounded-br-[75px]'>
+        <div className='h-195 w-screen bg-[url("../public/btc.webp")] bg-cover rounded-bl-[75px] rounded-br-[75px] shadow-xl'>
             <div className='h-195 rounded-bl-[75px] rounded-br-[75px] w-full absolute inset-0 bg-black/69'>
             {/* Overlay */}
             </div>
