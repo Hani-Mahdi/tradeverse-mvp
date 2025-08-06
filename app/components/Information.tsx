@@ -10,7 +10,7 @@ const Information = () => {
   return (
     <>
     <h1 className='text-black text-center mt-25 mb-10 text-6xl'>Change How You Trade</h1>
-    <div className='w-screen h-125 text-gray-300 flex flex-row items-center justify-evenly'>
+    <div className='w-screen h-125 text-gray-300 flex flex-row items-center justify-evenly mb-20'>
         {informationCards.map((item) => (
             <div key={item.title} className='w-2/9 h-5/6 flex rounded-md flex-col items-center justify-end gradient-bg'>
             <img className="w-1/3 invert" src={item.icon}/>

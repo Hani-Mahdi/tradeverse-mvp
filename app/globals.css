@@ -66,3 +66,11 @@ body {
   animation: glare 5s ease-in-out infinite;
   pointer-events: none;
 }
+
+.swiper-pagination-bullet {
+  background-color: black !important;
+  border: white 2px solid;
+}
+.swiper-pagination-bullet-active {
+  background-color: white !important;
+}
