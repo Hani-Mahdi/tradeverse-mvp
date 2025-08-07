@@ -7,6 +7,7 @@ import { Navigation, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import Trae from './Trae';
 
 
 
@@ -36,11 +37,8 @@ const MarketPulse = () => {
     ];
   return (
     <>
-    <div className='h-190 w-screen bg-[url("../public/charts1.png")] bg-cover rounded-[75px]'>
-        <div className='h-190 w-full rounded-[75px] bg-black/69 absolute'>
-        {/* Overlay */}
-        </div>
-        <div className='h-full w-full relative z-10 text-white pt-20 px-30 shadow-xl'>
+    <div className='h-190 w-screen gradient-bg rounded-[75px] my-20 shadow-2xl'>
+        <div className='h-full w-full relative z-10 text-white pt-20 px-30'>
             <h1 className='text-6xl text-center'><span className='text-black bg-white px-2 py-0 mr-2 rounded-xl'>LIVE</span> Market Pulse</h1>
             <div className='w-full h-2/3 flex flex-col lg:flex-row justify-center items-center mt-30'>
                 <div className='w-1/2 h-full'>
@@ -61,7 +59,7 @@ const MarketPulse = () => {
                 </div>
                 <div className='w-1/2 h-full flex items-center justify-center px-2'>
                 {/* No Data */}
-                <Swiper modules={[Navigation, Pagination]} pagination={{ clickable: false }} loop={true} spaceBetween={20} slidesPerView={1} autoplay={{delay:3000, disableOnInteraction: false}} className="w-3/4 h-1/2 flex items-center justify-center">
+                <Swiper modules={[Navigation, Pagination]} pagination={{ clickable: true }} loop={true} spaceBetween={20} slidesPerView={1} autoplay={{delay:100, disableOnInteraction: false}} className="w-3/4 h-1/2 flex items-center justify-center">
                     <SwiperSlide>
                         <div className="w-full h-full border-2 border-white p-3 rounded-xl">
                         <p>No Data</p>
@@ -79,6 +77,8 @@ const MarketPulse = () => {
             </div>
         </div>
     </div>
+
+    <Trae/>
     </>
   )
 }
