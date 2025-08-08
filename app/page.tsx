@@ -4,6 +4,7 @@ import Information from "./components/Information";
 import MarketPulse from "./components/MarketPulse";
 import Tester from "./components/Tester";
 import News from "./components/News"
+import ForexExchange from "./components/ForexExchange";
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
     <Information/>
     <MarketPulse/>
     <News/>
+    <ForexExchange/>
     </>
   );
 }

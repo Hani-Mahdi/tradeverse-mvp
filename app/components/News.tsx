@@ -5,31 +5,31 @@ const News = () => {
     const news = [
         {
             title: "CMFI - Latest",
-            img: "",
+            img: " ",
             desc: "Powell recently spoke, NASDAQ down 2%",
             date: "08/08/2025"
         },
         {
             title: "Crypto Markets Surge",
-            img: "",
+            img: " ",
             desc: "Bitcoin crosses $70K as ETF inflows hit record highs",
             date: "08/08/2025"
         },
         {
             title: "Tech Stocks Tumble",
-            img: "",
+            img: " ",
             desc: "Apple and Nvidia fall amid antitrust concerns",
             date: "08/08/2025"
         },
         {
             title: "Rate Cut Hopes Fade",
-            img: "",
+            img: " ",
             desc: "Fed minutes show hawkish tone; markets react sharply",
             date: "08/08/2025"
         },
         {
             title: "AI Startups Booming",
-            img: "",
+            img: " ",
             desc: "VCs pour billions into AI as Tradeverse reports record user growth",
             date: "08/08/2025"
         },
