@@ -34,8 +34,8 @@ const Footer = () => {
   ]
   return (
     <>
-    <div className='w-screen flex flex-col items-center gradient-bg h-90 mt-40 px-30 py-10'>
-      <div className="w-full text-gray-200 text-lg h-80 rounded-tl-[75px] rounded-tr-[75px] grid grid-cols-2">
+    <div className='w-screen flex flex-col items-center rounded-tl-[75px] rounded-tr-[75px] gradient-bg h-90 mt-40 px-30 py-10'>
+      <div className="w-full text-gray-200 text-lg h-80 grid grid-cols-2">
       <div className="h-full">
         <div className='grid grid-cols-2 grid-rows-6 w-1/4 underline h-full'>
         {foot.map((item)=>(
