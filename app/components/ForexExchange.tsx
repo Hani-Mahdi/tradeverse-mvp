@@ -4,7 +4,7 @@ import React from 'react'
 const ForexExchange = () => {
   return (
     <>
-    <div className='w-screen px-10 mb-10 h-160 gradient-bg grid md:grid-cols-3 grid-cols-1'>
+    <div className='w-screen px-10 mb-10 h-160 gradient-bg grid md:grid-cols-3 grid-cols-1 rounded-[75px]'>
         <div className='h-full py-10'>
         <img src="../forex.svg" className='w-20 mx-auto my-3 invert'/>
             <h1 className='text-center text-4xl font-bold text-white'>Exchange Rates</h1>
