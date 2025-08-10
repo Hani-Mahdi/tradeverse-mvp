@@ -1,5 +1,15 @@
 import Link from 'next/link'
 import React from 'react'
+import { 
+  SiInstagram, 
+  SiLinkedin, 
+  SiGithub, 
+  SiYoutube, 
+  SiFacebook, 
+  SiTiktok, 
+  SiReddit 
+} from 'react-icons/si';
+
 
 const Footer = () => {
   const foot = [
@@ -32,14 +42,53 @@ const Footer = () => {
       route: "7"
     },
   ]
+
+  const socials = [
+    {
+      Icon: SiInstagram,
+      link: "https://instagram.com",
+    },
+    {
+      Icon: SiLinkedin,
+      link: "https://linkedin.com",
+    },
+    {
+      Icon: SiGithub,
+      link: "https://github.com",
+    },
+    {
+      Icon: SiYoutube,
+      link: "https://youtube.com",
+    },
+    {
+      Icon: SiFacebook,
+      link: "https://facebook.com",
+    },
+    {
+      Icon: SiTiktok,
+      link: "https://tiktok.com",
+    },
+    {
+      Icon: SiReddit,
+      link: "https://reddit.com",
+    },
+  ];
+
   return (
     <>
     <div className='w-screen flex flex-col items-center rounded-tl-[75px] rounded-tr-[75px] gradient-bg h-90 mt-40 px-30 py-10'>
       <div className="w-full text-gray-200 text-lg h-80 grid grid-cols-2">
-      <div className="h-full">
-        <div className='grid grid-cols-2 grid-rows-6 w-1/4 underline h-full'>
+      <div className="h-full grid grid-cols-2">
+        <div className='grid grid-cols-2 underline w-fit gap-x-8 h-full'>
         {foot.map((item)=>(
           <Link key={item.route} href={item.route}>{item.name}</Link>
+        ))}
+        </div>
+        <div className='grid grid-cols-4 grid-rows-4'>
+          {socials.map(({Icon, link}) => (
+          <div key={link}>
+            <Icon className='h-8 w-8 delay-100 text-white hover:text-gray-200 '/>            
+          </div>
         ))}
         </div>
       </div>
@@ -53,7 +102,7 @@ const Footer = () => {
         </div>
       </div>
     </div>
-    <p className='text-center text-sm text-gray-400'>© 2025 Tradeverse. All rights reserved.&nbsp;Tradeverse is an AI-powered platform providing investment insights and market analysis. Information is for educational purposes only and should not be construed as financial advice. Always consult a licensed financial advisor before making investment decisions. Use of this site constitutes acceptance of our [Terms of Service] and [Privacy Policy].</p>
+    <p className='text-center text-sm text-gray-400'>© 2025 Tradeverse. All rights reserved.Tradeverse is an AI-powered platform providing investment insights and market analysis. Information is for educational purposes only and should not be construed as financial advice. Always consult a licensed financial advisor before making investment decisions. Use of this site constitutes acceptance of our [Terms of Service] and [Privacy Policy].</p>
     </div>
     </>
   )
