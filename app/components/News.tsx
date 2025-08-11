@@ -38,8 +38,7 @@ const News = () => {
   return (
     <>
     <div className='w-screen text-white h-90 gradient-bg mt-40 mb-30'>
-        <Marquee    
-        pauseOnHover
+        <Marquee
         speed={50}
         className='w-screen h-90 border-black'
         >

@@ -8,7 +8,7 @@ const ForexExchange = () => {
         <div className='h-full py-10'>
         <img src="../forex.svg" className='w-20 mx-auto my-3 invert'/>
             <h1 className='text-center text-4xl font-bold text-white'>Exchange Rates</h1>
-        <div className='text-3xl text-white mt-20 ml-15'>
+        <div className='text-2xl md:text-3xl text-white m-auto md:mt-20 md:ml-15'>
            <div className='w-1/2 rounded-full border-[#9A9A9A] border-4 p-3 flex flex-row items-center justify-start my-10'>
             <h1>To:</h1>
             <select className='w-30 h-7 ml-10 border-2 border-[#9A9A9A]'>
@@ -33,12 +33,12 @@ const ForexExchange = () => {
             </div>
             </div>    
         </div>
-        <div className=''>
+        <div className='invisible md:visible'>
             {/* "TO" Currency Name */}
 
             {/* Currency Graph */}
         </div>
-        <div className=''>
+        <div className='invisible md:visible'>
             {/* "FROM" Currency Name */}
 
             {/* Currency Graph */}

@@ -6,13 +6,13 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const Trae = () => {
   const [isHovered, setIsHovered] = useState(false);
-
+  
   return (
-    <div className="w-screen text-white flex justify-center items-center my-40">
+    <div className="w-screen text-white flex justify-center items-center my-20 md:my-40">
       <div
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
-        className="w-1/2 h-140 gradient-bg rounded-lg border-4 border-black flex flex-col items-center justify-around relative overflow-hidden"
+        className="w-4/5 md:w-1/2 h-120 p-4 md:p-0 md:h-140 gradient-bg rounded-lg border-4 border-black flex flex-col items-center justify-around relative overflow-hidden"
       >
         <AnimatePresence mode="wait">
           {isHovered ? (

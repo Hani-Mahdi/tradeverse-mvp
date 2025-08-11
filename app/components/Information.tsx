@@ -9,10 +9,10 @@ const Information = () => {
     ];
   return (
     <>
-    <h1 className='text-black text-center mt-25 mb-10 text-6xl md:text-6xl'>Change How You Trade</h1>
+    <h1 className='text-black text-center mt-25 mb-10 md:px-0 md:tracking-normal tracking-wide px-8 font-bold text-5xl md:text-6xl'>Change How You Trade</h1>
     <div className='h-fit w-screen md:h-125 text-gray-300 flex flex-col md:flex-row items-center justify-center md:items-center md:justify-evenly mb-20'>
         {informationCards.map((item) => (
-            <div key={item.title} className='w-3/4 h-110 my-5 md:my-0 md:w-2/9 md:h-5/6 flex rounded-md flex-col items-center justify-end gradient-bg'>
+            <div key={item.title} className='w-3/4 h-90 my-5 md:my-0 md:w-2/9 md:h-5/6 flex rounded-md flex-col items-center justify-end gradient-bg'>
             <img className="w-1/3 invert" src={item.icon}/>
             <div className='w-full h-1/2 flex flex-col items-center justify-center mt-2'>
             <h1 className='text-lg font-bold'>{item.title}</h1>
