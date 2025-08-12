@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 
@@ -12,6 +12,7 @@ import Trae from './Trae';
 
 
 const MarketPulse = () => {
+    
     const tickers = [
         {
             name: "APPL",

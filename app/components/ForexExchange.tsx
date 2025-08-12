@@ -1,7 +1,34 @@
-import React from 'react'
+'use client'
+
+import React, {useState, useEffect} from 'react'
 
 
 const ForexExchange = () => {
+
+    const [rates, setRates] = useState(null);
+    const [objectKeys, setObjectKeys] = useState<string[]>(["Default"])
+    useEffect(() => {
+        async function fetchRates() {
+            try {
+            const res = await fetch("/api/rates");
+            if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+            
+            const data = await res.json();
+            setRates(data.rates);
+            } catch (err) {
+            console.error('Fetch error:', err);
+            }
+        }
+        fetchRates();
+        
+    }, []);
+
+    useEffect(() => {
+        rates ? setObjectKeys(Object.keys(rates)) : setObjectKeys([]);
+
+    }, [rates]);
+
+
   return (
     <>
     <div className='w-screen px-10 mb-10 h-160 gradient-bg grid md:grid-cols-3 grid-cols-1 rounded-[75px]'>
@@ -12,7 +39,11 @@ const ForexExchange = () => {
            <div className='w-1/2 rounded-full border-[#9A9A9A] border-4 p-3 flex flex-row items-center justify-start my-10'>
             <h1>To:</h1>
             <select className='w-30 h-7 ml-10 border-2 border-[#9A9A9A]'>
-
+                {objectKeys.map((item: string) => (
+                    <option key={item} className='text-black text-md'>
+                        {item}
+                    </option>
+                ))}
             </select>
             </div>
             <div className='flex flex-row justify-start w-3/5 rounded-full items-center border-[#9A9A9A] border-4 p-3'>
