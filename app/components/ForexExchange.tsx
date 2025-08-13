@@ -7,6 +7,11 @@ const ForexExchange = () => {
 
     const [rates, setRates] = useState(null);
     const [objectKeys, setObjectKeys] = useState<string[]>(["Default"])
+    const [from, setFrom] = useState('USD')
+    const [to, setTo] = useState('USD')
+    const [amount, setAmount] = useState(0.01)
+    const [yeld, setYeld] = useState(0.01)
+
     useEffect(() => {
         async function fetchRates() {
             try {
@@ -20,14 +25,35 @@ const ForexExchange = () => {
             }
         }
         fetchRates();
-        
     }, []);
+
+    useEffect(()=>{
+        async function fetchGraphs(){
+            try {
+                const graphRes = await fetch(`/api/charts/?to=${to}&from=${from}`);
+                if (!graphRes.ok) throw new Error(`HTTP ERROR! status: ${graphRes.status}`);
+
+                const graphData = await graphRes.json();
+                console.log(graphData);
+            } catch (err) {
+                console.error('Ferch error:', err);
+            }
+        }
+        fetchGraphs();
+    }, [from, to])
 
     useEffect(() => {
         rates ? setObjectKeys(Object.keys(rates)) : setObjectKeys([]);
+        console.log(rates)
 
     }, [rates]);
 
+    useEffect(()=>{
+        if (rates){
+            const exchange = Math.round(((rates[from]*amount)/rates[to])*100)/100;
+            setYeld(exchange)
+        }
+    },[from, to, amount])
 
   return (
     <>
@@ -38,9 +64,10 @@ const ForexExchange = () => {
         <div className='text-2xl md:text-3xl text-white m-auto md:mt-20 md:ml-15'>
            <div className='w-1/2 rounded-full border-[#9A9A9A] border-4 p-3 flex flex-row items-center justify-start my-10'>
             <h1>To:</h1>
-            <select className='w-30 h-7 ml-10 border-2 border-[#9A9A9A]'>
+            <select value={to} onChange={(e)=>(setTo(e.target.value))} className='w-30 h-7 ml-10 border-2 border-[#9A9A9A] text-md'>
                 {objectKeys.map((item: string) => (
-                    <option key={item} className='text-black text-md'>
+                    <option key={item} 
+                    className='text-black text-md'>
                         {item}
                     </option>
                 ))}
@@ -48,18 +75,23 @@ const ForexExchange = () => {
             </div>
             <div className='flex flex-row justify-start w-3/5 rounded-full items-center border-[#9A9A9A] border-4 p-3'>
             <h1>From:</h1>
-            <select className='w-30 h-7 ml-10 border-2 border-[#9A9A9A]'>
-
+            <select value={from} onChange={(e)=>(setFrom(e.target.value))} className='w-30 h-7 ml-10 border-2 text-md border-[#9A9A9A]'>
+                {objectKeys.map((item: string) => (
+                    <option key={item} 
+                    className='text-black text-md'>
+                        {item}
+                    </option>
+                ))}
             </select>
             </div>
             <div className='w-full flex flex-row items-center justify-start items-center my-10'>
                 <h1>Amount: </h1>
-                <input className='w-1/6 h-7 text- text-xl h-3/4 mx-5 py-4 text-center border-2 border-[#9A9A9A]' defaultValue={0.01} type="number" placeholder="00.00" step={0.1} min={0}>
+                <input className='w-1/6 h-7 text- text-xl h-3/4 mx-5 py-4 text-center border-2 border-[#9A9A9A]' value={amount} onChange={(e)=>{setAmount(Number(e.target.value))}} type="number" placeholder="00.00" step={0.1} min={0}>
                 </input>
             </div>
             <div className='w-full flex flex-row justify-start items-center'>
             <h1>Exchange Amount: </h1>
-             <input className='w-1/6 h-7 text- text-xl h-3/4 mx-5 py-4 text-center border-2 border-[#9A9A9A]' defaultValue={0.01} type="number" placeholder="00.00" step={0.1} min={0}>
+             <input className='w-1/6 h-7 text- text-xl h-3/4 mx-5 py-4 text-center border-2 border-[#9A9A9A]' value={yeld} onChange={(e)=>{setYeld(Number(e.target.value))}} type="number"  step={0.1} min={0}>
             </input>
             </div>
             </div>    
