@@ -1,6 +1,7 @@
 'use client'
 
 import React, {useState, useEffect} from 'react'
+import LineChart from './LineChart'
 
 
 const ForexExchange = () => {
@@ -11,6 +12,8 @@ const ForexExchange = () => {
     const [to, setTo] = useState('USD')
     const [amount, setAmount] = useState(0.01)
     const [yeld, setYeld] = useState(0.01)
+    const [toGraph, setToGraph] = useState({})
+    const [fromGraph, setFromGraph] = useState({})
 
     useEffect(() => {
         async function fetchRates() {
@@ -34,7 +37,10 @@ const ForexExchange = () => {
                 if (!graphRes.ok) throw new Error(`HTTP ERROR! status: ${graphRes.status}`);
 
                 const graphData = await graphRes.json();
+                
                 console.log(graphData);
+                setToGraph(graphData.to)
+                setFromGraph(graphData.from)
             } catch (err) {
                 console.error('Ferch error:', err);
             }
@@ -98,12 +104,10 @@ const ForexExchange = () => {
         </div>
         <div className='invisible md:visible'>
             {/* "TO" Currency Name */}
-
-            {/* Currency Graph */}
+            <LineChart dataChart={toGraph}/>
         </div>
         <div className='invisible md:visible'>
-            {/* "FROM" Currency Name */}
-
+            <LineChart dataChart={fromGraph}/>
             {/* Currency Graph */}
         </div>
         
