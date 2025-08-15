@@ -1,7 +1,7 @@
 'use client'
 
 import React, {useState, useEffect} from 'react'
-import LineChart from './LineChart'
+import LineCharts from './LineCharts'
 
 
 const ForexExchange = () => {
@@ -39,8 +39,8 @@ const ForexExchange = () => {
                 const graphData = await graphRes.json();
                 
                 console.log(graphData);
-                setToGraph(graphData.to)
-                setFromGraph(graphData.from)
+                setToGraph(graphData.to.rates)
+                setFromGraph(graphData.from.rates)
             } catch (err) {
                 console.error('Ferch error:', err);
             }
@@ -73,7 +73,7 @@ const ForexExchange = () => {
             <select value={to} onChange={(e)=>(setTo(e.target.value))} className='w-30 h-7 ml-10 border-2 border-[#9A9A9A] text-md'>
                 {objectKeys.map((item: string) => (
                     <option key={item} 
-                    className='text-black text-md'>
+                    className='text-black text-sm'>
                         {item}
                     </option>
                 ))}
@@ -84,7 +84,7 @@ const ForexExchange = () => {
             <select value={from} onChange={(e)=>(setFrom(e.target.value))} className='w-30 h-7 ml-10 border-2 text-md border-[#9A9A9A]'>
                 {objectKeys.map((item: string) => (
                     <option key={item} 
-                    className='text-black text-md'>
+                    className='text-black text-sm'>
                         {item}
                     </option>
                 ))}
@@ -104,10 +104,10 @@ const ForexExchange = () => {
         </div>
         <div className='invisible md:visible'>
             {/* "TO" Currency Name */}
-            <LineChart dataChart={toGraph}/>
+            <LineCharts dataChart={toGraph} cur={to}/>
         </div>
         <div className='invisible md:visible'>
-            <LineChart dataChart={fromGraph}/>
+            <LineCharts dataChart={fromGraph} cur={from}/>
             {/* Currency Graph */}
         </div>
         
@@ -118,3 +118,9 @@ const ForexExchange = () => {
 }
 
 export default ForexExchange
+
+export const validGraphCurrencies = [
+      'AUD','BGN','BRL','CAD','CHF','CNY','CZK','DKK','EUR','GBP',
+      'HKD','HUF','IDR','ILS','INR','ISK','JPY','KRW','MXN','MYR',
+      'NOK','NZD','PHP','PLN','RON','SEK','SGD','THB','TRY','ZAR','USD'
+    ];
