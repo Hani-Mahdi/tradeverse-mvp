@@ -1,6 +1,6 @@
 'use client'
 import React from 'react';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, Label} from 'recharts';
+import { LineChart, Line, XAxis, YAxis, ResponsiveContainer, Label} from 'recharts';
 import { validGraphCurrencies } from './ForexExchange';
 
 
