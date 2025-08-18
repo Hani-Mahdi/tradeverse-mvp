@@ -1,41 +1,32 @@
-'use client';
-
+'use client'
 import React, { useEffect, useState } from 'react'
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
 import Trae from './Trae';
+import { StockData } from '../types/StockData';
+import DataSlider from "./DataSlider"
 
 
 
 const MarketPulse = () => {
     
-    const tickers = [
-        {
-            name: "APPL",
-            val$: 1.8,
-            icon: " ",
-        },
-        {
-            name: "NTLX",
-            val$: -2.7,
-            icon: " ",
-        },
-        {
-            name: "TSLA",
-            val$: 0.9,
-            icon: " ",
-        },
-        {
-            name: "BBCC",
-            val$: 0.9,
-            icon: " ",
-        },
-
-    ];
+    const [tickers, setTickers] = useState<StockData[]>([])
+    const [loading, setLoading] = useState(true)
+    useEffect(()=>{
+        async function getTickerInfo(){
+            try{
+                const res = await fetch(`/api/tickers?ticker=AAPL&ticker=MSFT&ticker=NVDA&ticker=IBM`)
+                if (!res.ok) throw new Error(`Error: ${res.status}`)
+                const data = await res.json()
+                setTickers(data)
+            } catch (err) {
+                console.log("Error: ", err)
+            } finally {
+                setLoading(false)
+            }
+        }
+        getTickerInfo()
+    }, [])
+    useEffect(()=>(console.log(tickers)), [tickers])
   return (
     <>
     <div className='h-140 md:h-190 w-screen gradient-bg rounded-[75px] my-20 shadow-2xl'>
@@ -48,30 +39,29 @@ const MarketPulse = () => {
                 <div className='w-6/7 md:w-1/2 h-full flex flex-row'>
                 <div className='w-1/2 h-full flex flex-col justify-center items-center'>
                 {/* Tickers */}
-                {tickers.map((item) => (
+                {
+                    !loading && tickers.length ?
+                    tickers.map((item) => (
                     <div key={item.name} className='flex text-md md:text-lg md:py-0 p-1 w-full h-1/6 sm:h-1/8 flex-row justify-between items-center rounded-full my-2 px-3 border-2 border-white'>
                         <div className='w-1/4 h-full flex flex-row justify-around items-center'>
-                            <img className="w-1/3 h-1/2" src={item.icon}/>
+                            <img className="w-1/3 h-1/2"/>
                             <h1>{item.name}</h1>
                         </div>
-                        <h1 className={`font-bold ${ item.val$<0 ? "text-red-500" : "text-white"}`}>{item.val$}%</h1>
+                        {
+                            Number(item.d.toFixed(2))<0 ?
+                            <h1 className='font-bold text-red-400'>{Number(item.d.toFixed(2))}%</h1> 
+                            : 
+                            <h1 className='font-bold text-green-400'>{Number(item.d.toFixed(2))}%</h1>
+                        }
                     </div>
-                ))}
+                )) 
+                :
+                "Loading"
+                }
                 </div>
                 <div className='w-1/2 h-full flex items-center justify-center'>
                 {/* No Data */}
-                <Swiper modules={[Navigation, Pagination, Autoplay]} pagination={{ clickable: true }} loop={true} spaceBetween={20} slidesPerView={1} autoplay={{delay:5000, disableOnInteraction: false}} className="w-3/4 h-1/2 flex items-center justify-center">
-                    <SwiperSlide>
-                        <div className="w-full h-full border-2 border-white p-3 rounded-xl">
-                        <p>No Data</p>
-                        </div>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <div className="w-full h-full p-3 rounded-xl bg-white/69">
-                        </div>
-                    </SwiperSlide>
-                </Swiper>
-                
+                <DataSlider/>
                 
                 </div>
                 </div>
