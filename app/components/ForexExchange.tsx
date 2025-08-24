@@ -92,12 +92,12 @@ const ForexExchange = () => {
             </div>
             <div className='w-full flex flex-row items-center justify-start items-center my-10'>
                 <h1>Amount: </h1>
-                <input className='w-1/6 h-7 text-xl h-3/4 mx-5 py-4 text-center border-2 border-[#9A9A9A]' value={amount} onChange={(e)=>{setAmount(Number(e.target.value))}} type="number" placeholder="00.00" step={0.1} min={0}>
+                <input className='w-1/6 h-7 text-xl h-3/4 mx-5 py-4 text-center border-2 border-[#9A9A9A]' value={amount} onChange={(e)=>{setAmount(Number(e.target.value))}} type="number" min={0}>
                 </input>
             </div>
             <div className='w-full flex flex-row justify-start items-center'>
             <h1>Exchange Amount: </h1>
-             <input className='w-1/6 h-7 text-xl h-3/4 mx-5 py-4 text-center border-2 border-[#9A9A9A]' value={yeld} onChange={(e)=>{setYeld(Number(e.target.value))}} type="number"  step={0.1} min={0}>
+             <input className='w-1/6 h-7 text-xl h-3/4 mx-5 py-4 text-center border-2 border-[#9A9A9A]' value={yeld} onChange={(e)=>{setYeld(Number(e.target.value))}} type="number" min={0}>
             </input>
             </div>
             </div>    
