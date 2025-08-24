@@ -21,8 +21,8 @@ const DataSlider = ({data}: Props) => {
         <SwiperSlide>
             <div className="w-full h-full border-2 border-white p-3 rounded-xl">
               <a href={data[0].url}>
-                <h1 className='text-xl font-bold mb-4'>{data[0].headline.slice(0, 40)}...</h1>
-                <p>{data[0].summary}</p>
+                <h1 className='text-[10px] md:text-xl font-bold mb-4'>{data[0].headline.slice(0, 40)}...</h1>
+                <p className='text-[8px] sm:text-lg'>{data[0].summary}</p>
               </a>  
             </div>
         </SwiperSlide>
