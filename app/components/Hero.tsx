@@ -1,5 +1,6 @@
 import React from 'react'
 import NavBar from './NavBar'
+import Link from 'next/link'
 
 const Hero = () => {
   return (
@@ -22,12 +23,16 @@ const Hero = () => {
                 <div className='w-full sm:h-1/3 h-1/4 flex flex-row items-center sm:mt-7 lg:mt-0 justify-center'>
                 {/* Buttons */}
 
+                <Link href="/login">
                 <button className='ease-in duration-75 hover:bg-white hover:border-black hover:text-black h-10 sm:h-13 w-26 sm:w-36 bg-black text-white text-lg sm:text-2xl border-2 border-white mr-4'>
                     JOIN NOW
                 </button>
+                </Link>
+                <Link href="/login">
                 <button className='ease-in duration-75 hover:bg-black hover:border-white hover:text-white h-10 sm:h-13 w-26 sm:w-36 bg-white text-black text-lg sm:text-2xl border-2 border-black ml-4'>
                     JOIN NOW
                 </button>
+                </Link>
 
                 </div>
             </div>
